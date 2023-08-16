@@ -58,13 +58,41 @@ section{
   /* background-color: red; */
   order: 3;
 }
-.part-player>img, .part-bot>img{
+.part-player>ul{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-left:0;
+}
+.part-player li{
+  width: 45%;
+  align-items: center;
+  margin-right: 3px;
+}
+.part-player>ul>li>img{
   box-sizing: border-box;
   width: 100%;
   align-items: center;
   border-radius: 20px;
   background-color: #fff;
 }
+
+.part-player>img, .part-bot>img{
+  box-sizing: border-box;
+  object-fit: cover;
+  display: block;
+  width: auto;
+  height: 100%;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #fff;
+}
 .none{
   display: none;
+}
+
+li{
+  list-style-type: none;
 }

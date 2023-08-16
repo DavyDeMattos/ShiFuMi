@@ -16,7 +16,14 @@ const app = {
     const showButton = rulesButton.addEventListener("click", app.showRules);
 
     app.homeSelection();
+    app.setCards(cards, getRandomInt(max), getRandomInt(max))
+  },
 
+  handleClick: function(event){
+    const target = event.target.getAttribute('value');
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
   },
 
   /**
@@ -25,21 +32,78 @@ const app = {
   homeSelection: function () {
     const difficultyButtons = document.querySelectorAll('.difficulty-element');
     difficultyButtons.forEach(difficulty => {
-      difficulty.addEventListener('click', app.setGame)
+      difficulty.addEventListener('click', app.setType)
     });
   },
 
-  setGame: function(difficulty){
-    console.log("Fonction setGame appelée");
+ /**
+  * Fonction qui paramêtre le style de jeu
+  * @param {string} difficulty 
+  */
+  setType: function(difficulty){
+    console.log("Fonction setType appelée");
     const gameType = difficulty.currentTarget.getAttribute('value');
-    // let difficultyClass = "normal";
     const cards = ["ciseaux", "feuille", "pierre"];
     if (gameType == "spock"){
       // en cas du type "spock", nous rajoutons les éléments dans la liste des cartes.
       cards.push("lezard", "spock");
     }
+    const divDifficulty = document.querySelector('.difficulty').classList.add('none');
+    const divGame = document.querySelector('.game').classList.remove('none');
+    app.setGame(cards, difficulty);
   },
 
+ /**
+  * Fonction qui paramêtre le style de jeu
+  * recoit le tableau contenant les différentes cartes
+  * @param {array} cards 
+  * @param {string} difficulty 
+  */
+   setGame: function(cards, difficulty){
+    const title = document.querySelector('#titleGame');
+
+    // Modiffication du titre
+    let textTitle= "";
+    if (difficulty == "spock"){
+      textTitle = "Pierre Papier Ciseaux Lézard Spock";
+    }else {
+      textTitle = "Pierre Papier Ciseaux";
+    }
+    title.textContent = textTitle;
+    // ----------------------
+    const ulElement = document.querySelector('#listCards');
+    console.log(ulElement);
+    cards.forEach((card, index) => {
+      let liElement = document.createElement('li');
+      ulElement.appendChild(liElement);
+      liElement.innerHTML = `<img src='./assets/${card}.jpg' value='${index}' />`
+    });
+    const max = cards.length - 1;
+
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
+    const liElements = document.querySelectorAll('li');
+    console.log(liElements);
+    liElements.forEach(liElement => {
+      liElement.addEventListener('click', app.handleClick)
+    });
+    // Appel de la fonction setCards en envoyant un chiffre alléatoire entre 0 et le max -1
+    // app.setCards(cards, getRandomInt(max), getRandomInt(max))
+  },
+
+  /**
+   * 
+   * @param {array} cards 
+   * @param {int} player 
+   * @param {int} bot 
+   */
+  setCards: function(cards, player, bot){
+    console.log(cards[player]);
+    console.log(cards[bot]);
+    const partPlayer = document.querySelector('.part-player');
+    const partBot = document.querySelector('.part-bot');
+  },
   /**
    * Fonction qui affiche une page expliquant les règles
    */
