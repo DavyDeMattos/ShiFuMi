@@ -1,0 +1,70 @@
+body{
+  background-color:bisque;
+}
+header{
+  display: flex;
+  justify-content: space-around;
+}
+
+.container{
+  /* background-color: #fff; */
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 600px){
+  .container{
+    width: 80%;
+  }
+}
+/*--------------------- 
+Difficulty section
+--------------------- */
+
+.difficulty-element{
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/*--------------------- 
+Game section
+--------------------- */
+
+section{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.timer{
+  order: 1;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.part-player, .part-bot{
+  width: 45%;
+  border-radius: 20px;
+  display: flex;
+
+}
+.part-player{
+  /* background-color: blue; */
+  order: 2;
+}
+
+.part-bot{
+  /* background-color: red; */
+  order: 3;
+}
+.part-player>img, .part-bot>img{
+  box-sizing: border-box;
+  width: 100%;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #fff;
+}
+.none{
+  display: none;
+}
