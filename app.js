@@ -1,5 +1,5 @@
 /* TODO :
-- Ecran d'accueil avec sélection style de jeu
+X Ecran d'accueil avec sélection style de jeu
 - Version pierre papier ciseaux classique
 - Faire un système de message
 - Rajouter un système de manches ?
@@ -9,49 +9,38 @@
 - faire un compteur de victoire d'affilé
 
 */
+let playerCard = null;
+const cards = ["ciseaux", "feuille", "pierre"];
 
 const app = {
+  /**
+   * Fonction qui s'initialise au chargement de la page
+   */
   init: function () {
     const rulesButton = document.querySelector('#rules');
     const showButton = rulesButton.addEventListener("click", app.showRules);
 
-    app.homeSelection();
-    app.setCards(cards, getRandomInt(max), getRandomInt(max))
-  },
-
-  handleClick: function(event){
-    const target = event.target.getAttribute('value');
-    function getRandomInt(max) {
-      return Math.floor(Math.random() * max);
-    }
+    difficulties.homeSelection();
   },
 
   /**
-   * Fonction qui affiche le menu de sélection du type de jeu 
+   * Fonction qui récupère une valeur de la carte cliqué
+   * @param {*} event 
    */
-  homeSelection: function () {
-    const difficultyButtons = document.querySelectorAll('.difficulty-element');
-    difficultyButtons.forEach(difficulty => {
-      difficulty.addEventListener('click', app.setType)
-    });
+  handleClick: function(event){
+    console.log("Fonction handleClick appelée");
+    const target = event.target.getAttribute('value');
+    playercard = target;
+
+    const max = cards.length - 1;
+
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
+    app.setCards(cards, playercard, max);
   },
 
- /**
-  * Fonction qui paramêtre le style de jeu
-  * @param {string} difficulty 
-  */
-  setType: function(difficulty){
-    console.log("Fonction setType appelée");
-    const gameType = difficulty.currentTarget.getAttribute('value');
-    const cards = ["ciseaux", "feuille", "pierre"];
-    if (gameType == "spock"){
-      // en cas du type "spock", nous rajoutons les éléments dans la liste des cartes.
-      cards.push("lezard", "spock");
-    }
-    const divDifficulty = document.querySelector('.difficulty').classList.add('none');
-    const divGame = document.querySelector('.game').classList.remove('none');
-    app.setGame(cards, difficulty);
-  },
+
 
  /**
   * Fonction qui paramêtre le style de jeu
@@ -71,20 +60,18 @@ const app = {
     }
     title.textContent = textTitle;
     // ----------------------
-    const ulElement = document.querySelector('#listCards');
-    console.log(ulElement);
+    const partPlayer = document.querySelector('.part-player');
+    const ulElement = document.createElement('ul');
+    // console.log(ulElement);
     cards.forEach((card, index) => {
       let liElement = document.createElement('li');
+      partPlayer.appendChild(ulElement);
       ulElement.appendChild(liElement);
       liElement.innerHTML = `<img src='./assets/${card}.jpg' value='${index}' />`
     });
-    const max = cards.length - 1;
 
-    function getRandomInt(max) {
-      return Math.floor(Math.random() * max);
-    }
     const liElements = document.querySelectorAll('li');
-    console.log(liElements);
+    // console.log(liElements);
     liElements.forEach(liElement => {
       liElement.addEventListener('click', app.handleClick)
     });
@@ -93,7 +80,7 @@ const app = {
   },
 
   /**
-   * 
+   * Show img on screen after user clic
    * @param {array} cards 
    * @param {int} player 
    * @param {int} bot 
@@ -102,13 +89,17 @@ const app = {
     console.log(cards[player]);
     console.log(cards[bot]);
     const partPlayer = document.querySelector('.part-player');
+    partPlayer.innerHTML = `<img src='./assets/${cards[player]}.jpg' value='${player}' />`;
     const partBot = document.querySelector('.part-bot');
+    partBot.innerHTML = `<img src='./assets/${cards[bot]}.jpg' value='${bot}' />`;
+
+    results.whoWon(cards, player, bot)
   },
   /**
    * Fonction qui affiche une page expliquant les règles
    */
   showRules: function () {
-    // console.log("Fonction rulesButton appelée");
+    console.log("Fonction rulesButton appelée");
 
   },
 
