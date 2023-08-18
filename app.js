@@ -11,7 +11,7 @@ X Ecran d'accueil avec sélection style de jeu
 */
 let playerCard = null;
 const cards = ["ciseaux", "feuille", "pierre"];
-
+// const cards = ["ciseaux", "feuille", "pierre", "lezard", "spock"]
 const app = {
   /**
    * Fonction qui s'initialise au chargement de la page

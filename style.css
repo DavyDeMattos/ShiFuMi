@@ -96,3 +96,12 @@ section{
 li{
   list-style-type: none;
 }
+
+.result{
+  z-index: 1;
+  width: 97%;
+  height: 15vh;
+  margin-top: 9rem;
+  background-color: aliceblue;
+  position: absolute;
+}
