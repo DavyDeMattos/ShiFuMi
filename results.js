@@ -2,11 +2,10 @@ const results = {
 
   /**
    * Fonction qui détermine qui gagne
-   * @param {array} cards 
    * @param {int} player 
    * @param {int} bot 
    */
-  whoWon: function (cards, player, bot) {
+  whoWon: function (player, bot) {
     if (player == bot){
       results.showResult("Egalité", cards)
     }else { 
@@ -41,9 +40,8 @@ const results = {
   /**
    * 
    * @param {string} result 
-   * @param {array} cards 
    */
-  showResult:function (result, cards){
+  showResult:function (result){
     // console.log("fonction showResult appelé")
     // console.log(cards);
     this.showScore(result);
@@ -81,10 +79,8 @@ const results = {
     const sectionGame = document.querySelector(".result");
     sectionGame.remove(); 
     
-    console.log(cards);
     app.setGame((cards, ((cards.includes("spock")) ? "spock" : "normal")))
-    // console.log("test cliqué");
-    // console.log((cards.includes("spock")) ? "spock" : "normal");
+
   }
 
 }

@@ -4,11 +4,16 @@ Jeu de Pierre Papier Ciseau avec varations
 
 ## A faire
 
-- Faire une version pierre papier ciseaux
-- puis une version avec lézar spock
+- [x] Faire une version pierre papier ciseaux
 
-- rajouter récapitulatif des règles
-- compteur de points
-- timer
-- messages en cas de victoire ou défaite
-- parties en X manches
+- [x] puis une version avec lézar spock
+
+- [ ] rajouter récapitulatif des règles
+
+- [x] compteur de points
+
+- [ ] timer
+
+- [x] messages en cas de victoire ou défaite
+  
+- [ ] parties en X manches
