@@ -1,10 +1,10 @@
 /* TODO :
 X Ecran d'accueil avec sélection style de jeu
-- Version pierre papier ciseaux classique
-- Faire un système de message
+X Version pierre papier ciseaux classique
+X Faire un système de message
 - Rajouter un système de manches ?
 
-- version avec pierre papier ciseaux lézar spock
+X version avec pierre papier ciseaux lézar spock
 - dynamiser le menu pour ajouter les règles en fonction du style
 - faire un compteur de victoire d'affilé
 
@@ -12,6 +12,11 @@ X Ecran d'accueil avec sélection style de jeu
 let playerCard = null;
 const cards = ["ciseaux", "feuille", "pierre"];
 // const cards = ["ciseaux", "feuille", "pierre", "lezard", "spock"]
+
+const scoreTitle = document.querySelector('#score');
+let score = 0;
+scoreTitle.textContent = score;
+
 const app = {
   /**
    * Fonction qui s'initialise au chargement de la page
@@ -19,8 +24,9 @@ const app = {
   init: function () {
     const rulesButton = document.querySelector('#rules');
     const showButton = rulesButton.addEventListener("click", app.showRules);
-
+    
     difficulties.homeSelection();
+
   },
 
   /**
@@ -28,7 +34,7 @@ const app = {
    * @param {*} event 
    */
   handleClick: function(event){
-    console.log("Fonction handleClick appelée");
+    // console.log("Fonction handleClick appelée");
     const target = event.target.getAttribute('value');
     playercard = target;
 
@@ -62,7 +68,7 @@ const app = {
     // ----------------------
     const partPlayer = document.querySelector('.part-player');
     const ulElement = document.createElement('ul');
-    // console.log(ulElement);
+    console.log(cards);
     cards.forEach((card, index) => {
       let liElement = document.createElement('li');
       partPlayer.appendChild(ulElement);
@@ -86,8 +92,8 @@ const app = {
    * @param {int} bot 
    */
   setCards: function(cards, player, bot){
-    console.log(cards[player]);
-    console.log(cards[bot]);
+    // console.log(cards[player]);
+    // console.log(cards[bot]);
     const partPlayer = document.querySelector('.part-player');
     partPlayer.innerHTML = `<img src='./assets/${cards[player]}.jpg' value='${player}' />`;
     const partBot = document.querySelector('.part-bot');

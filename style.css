@@ -38,7 +38,7 @@ section{
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.timer{
+.scoring{
   order: 1;
   width: 100%;
   margin-bottom: 1rem;
@@ -104,4 +104,13 @@ li{
   margin-top: 9rem;
   background-color: aliceblue;
   position: absolute;
+}
+
+.restart--button{
+  background-color: darkkhaki;
+  text-align: center;
+  border: 1px black;
+  width: 60%;
+  border-radius: 5px;
+  margin-left: 20%;
 }
