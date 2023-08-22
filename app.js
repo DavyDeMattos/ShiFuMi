@@ -1,26 +1,34 @@
 /* TODO :
 X Ecran d'accueil avec sélection style de jeu
-- Version pierre papier ciseaux classique
-- Faire un système de message
+X Version pierre papier ciseaux classique
+X Faire un système de message
 - Rajouter un système de manches ?
 
-- version avec pierre papier ciseaux lézar spock
+X version avec pierre papier ciseaux lézar spock
 - dynamiser le menu pour ajouter les règles en fonction du style
-- faire un compteur de victoire d'affilé
+X faire un compteur de victoire d'affilé
 
 */
 let playerCard = null;
 const cards = ["ciseaux", "feuille", "pierre"];
 // const cards = ["ciseaux", "feuille", "pierre", "lezard", "spock"]
+
+const scoreTitle = document.querySelector('#score');
+let score = 0;
+scoreTitle.textContent = score;
+
 const app = {
   /**
    * Fonction qui s'initialise au chargement de la page
    */
   init: function () {
-    const rulesButton = document.querySelector('#rules');
-    const showButton = rulesButton.addEventListener("click", app.showRules);
-
+    // const rulesButton = document.querySelector('.rules');
+    const rulesButton = null;
+    console.log(rulesButton);
+    const showButton = rulesButton.addEventListener("click", app.showRules;
+    
     difficulties.homeSelection();
+
   },
 
   /**
@@ -28,16 +36,17 @@ const app = {
    * @param {*} event 
    */
   handleClick: function(event){
-    console.log("Fonction handleClick appelée");
+    // console.log("Fonction handleClick appelée");
     const target = event.target.getAttribute('value');
     playercard = target;
 
     const max = cards.length - 1;
 
     function getRandomInt(max) {
-      return Math.floor(Math.random() * max);
+      return Math.round(Math.random() * max);
     }
-    app.setCards(cards, playercard, max);
+
+    app.setCards(playercard, getRandomInt(max));
   },
 
 
@@ -45,10 +54,9 @@ const app = {
  /**
   * Fonction qui paramêtre le style de jeu
   * recoit le tableau contenant les différentes cartes
-  * @param {array} cards 
   * @param {string} difficulty 
   */
-   setGame: function(cards, difficulty){
+   setGame: function(difficulty){
     const title = document.querySelector('#titleGame');
 
     // Modiffication du titre
@@ -62,7 +70,7 @@ const app = {
     // ----------------------
     const partPlayer = document.querySelector('.part-player');
     const ulElement = document.createElement('ul');
-    // console.log(ulElement);
+    // console.log(cards);
     cards.forEach((card, index) => {
       let liElement = document.createElement('li');
       partPlayer.appendChild(ulElement);
@@ -81,19 +89,18 @@ const app = {
 
   /**
    * Show img on screen after user clic
-   * @param {array} cards 
    * @param {int} player 
    * @param {int} bot 
    */
-  setCards: function(cards, player, bot){
-    console.log(cards[player]);
-    console.log(cards[bot]);
+  setCards: function(player, bot){
+    // console.log(cards[player]);
+    // console.log(cards[bot]);
     const partPlayer = document.querySelector('.part-player');
     partPlayer.innerHTML = `<img src='./assets/${cards[player]}.jpg' value='${player}' />`;
     const partBot = document.querySelector('.part-bot');
     partBot.innerHTML = `<img src='./assets/${cards[bot]}.jpg' value='${bot}' />`;
 
-    results.whoWon(cards, player, bot)
+    results.whoWon(player, bot)
   },
   /**
    * Fonction qui affiche une page expliquant les règles

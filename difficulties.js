@@ -22,7 +22,7 @@ const difficulties = {
       }
       const divDifficulty = document.querySelector('.difficulty').classList.add('none');
       const divGame = document.querySelector('.game').classList.remove('none');
-      app.setGame(cards, difficulty);
+      app.setGame(difficulty);
     },
 
 }
