@@ -120,3 +120,14 @@ li{
   border-radius: 5px;
   margin-left: 20%;
 }
+
+.rules--explaination{
+  z-index: 2;
+  width: 90%;
+  height: 15vh;
+  border-radius: 10px;
+  margin-top: 9rem;
+  margin-left: 3%;
+  background-color: rgba(240, 248, 255, 0.932) ;
+  position: absolute;
+}

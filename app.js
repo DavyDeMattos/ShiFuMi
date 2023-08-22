@@ -22,10 +22,10 @@ const app = {
    * Fonction qui s'initialise au chargement de la page
    */
   init: function () {
-    // const rulesButton = document.querySelector('.rules');
-    const rulesButton = null;
-    console.log(rulesButton);
-    const showButton = rulesButton.addEventListener("click", app.showRules;
+    const rulesButton = document.querySelector('#rules');
+    // const rulesButton = "coucou";
+    // console.log(rulesButton);
+    const showButton = rulesButton.addEventListener("click", app.showRules);
     
     difficulties.homeSelection();
 
@@ -62,9 +62,9 @@ const app = {
     // Modiffication du titre
     let textTitle= "";
     if (difficulty == "spock"){
-      textTitle = "Pierre Papier Ciseaux Lézard Spock";
+      textTitle = "Pierre Feuille Ciseaux Lézard Spock";
     }else {
-      textTitle = "Pierre Papier Ciseaux";
+      textTitle = "Pierre Feuille Ciseaux";
     }
     title.textContent = textTitle;
     // ----------------------
@@ -106,8 +106,19 @@ const app = {
    * Fonction qui affiche une page expliquant les règles
    */
   showRules: function () {
-    console.log("Fonction rulesButton appelée");
-
+    // console.log("Fonction rulesButton appelée");
+    const gameArea = document.querySelector('.game');
+    const divElement = document.createElement("div");
+    gameArea.appendChild(divElement);
+    divElement.classList.add("rules--explaination");
+    if (cards[cards.length-1] == "spock"){
+    divElement.innerHTML = `<h4>Règles</h4><img src='./assets/explication_2.jpg'/>`;
+    } else if (cards[cards.length-1] == "pierre"){
+    divElement.innerHTML = `<h4>Règles</h4><img src='./assets/explication_1.jpg'/>`;
+    } else {
+    divElement.innerHTML = `<h4>Règles</h4><img src='./assets/explication_1.jpg'/><img src='./assets/explication_2.jpg'/>`;
+    }
+    console.log(divElement);
   },
 
 };
