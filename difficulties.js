@@ -14,11 +14,12 @@ const difficulties = {
   * @param {string} difficulty 
   */
     setType: function(difficulty){
+      app.cards = ["ciseaux", "feuille", "pierre"];
       // console.log("Fonction setType appelée");
       const gameType = difficulty.currentTarget.getAttribute('value');
       if (gameType == "spock"){
         // en cas du type "spock", nous rajoutons les éléments dans la liste des cartes.
-        cards.push("lezard", "spock");
+        app.cards.push("lezard", "spock");
       }
       const divDifficulty = document.querySelector('.difficulty').classList.add('none');
       const divGame = document.querySelector('.game').classList.remove('none');

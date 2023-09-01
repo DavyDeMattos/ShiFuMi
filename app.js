@@ -1,16 +1,6 @@
-/* TODO :
-X Ecran d'accueil avec sélection style de jeu
-X Version pierre papier ciseaux classique
-X Faire un système de message
-- Rajouter un système de manches ?
-
-X version avec pierre papier ciseaux lézar spock
-- dynamiser le menu pour ajouter les règles en fonction du style
-X faire un compteur de victoire d'affilé
-
-*/
-let playerCard = null;
-const cards = ["ciseaux", "feuille", "pierre"];
+let playerCard = card = null;
+// let cards= "";
+// const cards = ["ciseaux", "feuille", "pierre"];
 // const cards = ["ciseaux", "feuille", "pierre", "lezard", "spock"]
 
 const scoreTitle = document.querySelector('#score');
@@ -40,7 +30,7 @@ const app = {
     const target = event.target.getAttribute('value');
     playercard = target;
 
-    const max = cards.length - 1;
+    const max = app.cards.length - 1;
 
     function getRandomInt(max) {
       return Math.round(Math.random() * max);
@@ -70,8 +60,8 @@ const app = {
     // ----------------------
     const partPlayer = document.querySelector('.part-player');
     const ulElement = document.createElement('ul');
-    // console.log(cards);
-    cards.forEach((card, index) => {
+    console.log(app.cards);
+    app.cards.forEach((card, index) => {
       let liElement = document.createElement('li');
       partPlayer.appendChild(ulElement);
       ulElement.appendChild(liElement);
@@ -96,9 +86,9 @@ const app = {
     // console.log(cards[player]);
     // console.log(cards[bot]);
     const partPlayer = document.querySelector('.part-player');
-    partPlayer.innerHTML = `<img src='./assets/${cards[player]}.jpg' value='${player}' />`;
+    partPlayer.innerHTML = `<img src='./assets/${app.cards[player]}.jpg' value='${player}' />`;
     const partBot = document.querySelector('.part-bot');
-    partBot.innerHTML = `<img src='./assets/${cards[bot]}.jpg' value='${bot}' />`;
+    partBot.innerHTML = `<img src='./assets/${app.cards[bot]}.jpg' value='${bot}' />`;
 
     results.whoWon(player, bot)
   },
@@ -107,18 +97,36 @@ const app = {
    */
   showRules: function () {
     // console.log("Fonction rulesButton appelée");
-    const gameArea = document.querySelector('.game');
+    function insertAfter(referenceNode, newNode) {
+      referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+    }
+    const gameArea = document.querySelector('h1');
     const divElement = document.createElement("div");
     gameArea.appendChild(divElement);
+    // insertAfter(gameArea, divElement);
+
+    // console.log(cards);
     divElement.classList.add("rules--explaination");
-    if (cards[cards.length-1] == "spock"){
+
+    if (!app.cards){
+      divElement.innerHTML = `<h4>Règles</h4> <h5>Pierre Papier Ciseaux</h5><img src='./assets/explication_1.jpg'/><h5>Pierre Papier Ciseaux Lézard Spock</h5><img src='./assets/explication_2.jpg'/>`;
+    }else if (app.cards[app.cards.length-1] == "spock"){
     divElement.innerHTML = `<h4>Règles</h4><img src='./assets/explication_2.jpg'/>`;
-    } else if (cards[cards.length-1] == "pierre"){
+    } else if (app.cards[app.cards.length-1] == "pierre"){
     divElement.innerHTML = `<h4>Règles</h4><img src='./assets/explication_1.jpg'/>`;
-    } else {
-    divElement.innerHTML = `<h4>Règles</h4><img src='./assets/explication_1.jpg'/><img src='./assets/explication_2.jpg'/>`;
     }
-    console.log(divElement);
+
+    document.addEventListener("mouseup", function(event) {
+      var obj = document.querySelector(".rules--explaination");
+      if (!obj.contains(event.target)) {
+          // alert("Outside click detected!");
+          divElement.remove();
+      }
+      else {
+          // alert("Inside click detected!");
+      }
+    });
+    // console.log(divElement);
   },
 
 };

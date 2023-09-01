@@ -6,6 +6,26 @@ header{
   justify-content: space-around;
 }
 
+/*--------------------- 
+Rules section
+--------------------- */
+
+.rules--explaination{
+  z-index: 2;
+  width: 90%;
+  height: auto;
+  border-radius: 10px;
+  left: 3rem;
+  background-color: rgba(240, 248, 255, 0.932);
+  position: absolute;
+}
+header>a, header>#rules{
+  padding: 1rem;
+}
+#rules, .restart--button{
+  cursor: pointer;
+}
+
 .container{
   /* background-color: #fff; */
   margin: 0 auto;
@@ -119,15 +139,4 @@ li{
   width: 60%;
   border-radius: 5px;
   margin-left: 20%;
-}
-
-.rules--explaination{
-  z-index: 2;
-  width: 90%;
-  height: 15vh;
-  border-radius: 10px;
-  margin-top: 9rem;
-  margin-left: 3%;
-  background-color: rgba(240, 248, 255, 0.932) ;
-  position: absolute;
 }

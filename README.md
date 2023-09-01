@@ -8,7 +8,7 @@ Jeu de Pierre Papier Ciseau avec varations
 
 - [x] puis une version avec lézar spock
 
-- [ ] rajouter récapitulatif des règles
+- [x] rajouter récapitulatif des règles
 
 - [x] compteur de points
 
