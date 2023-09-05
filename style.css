@@ -87,17 +87,20 @@ section{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   padding-left:0;
 }
 .part-player li{
   width: 45%;
+  height: 45%;
   align-items: center;
   margin-right: 3px;
+  margin-bottom: 3px;
 }
 .part-player>ul>li>img{
   box-sizing: border-box;
   width: 100%;
+  height: -webkit-fill-available;
   align-items: center;
   border-radius: 20px;
   background-color: #fff;
@@ -123,11 +126,11 @@ li{
 
 .result{
   z-index: 1;
-  width: 90%;
+  width: 78%;
   height: 15vh;
   border-radius: 10px;
-  margin-top: 9rem;
-  margin-left: 3%;
+  margin-top: 20%;
+  /* margin-left: 3%; */
   background-color: rgba(240, 248, 255, 0.932) ;
   position: absolute;
 }

@@ -66,15 +66,14 @@ const results = {
     } else if (result=="Perdu"){
       score = 0;
     }
-    
     scoreTitle.textContent = score;
   },
 
   reset:function(){
     const partPlayer = document.querySelector('.part-player');
     const partBot = document.querySelector('.part-bot');
-    partPlayer.innerHTML = partBot.innerHTML = "";
-    
+    partPlayer.innerHTML = "";
+    partBot.innerHTML = robotImg;
     const sectionGame = document.querySelector(".result");
     sectionGame.remove(); 
     

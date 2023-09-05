@@ -17,3 +17,6 @@ Jeu de Pierre Papier Ciseau avec varations
 - [x] messages en cas de victoire ou défaite
   
 - [ ] parties en X manches
+
+- [ ] Mode Pokemon avec Carapuce, Bulbizarre et Salamèche
+

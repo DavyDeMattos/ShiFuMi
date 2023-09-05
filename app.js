@@ -2,6 +2,7 @@ let playerCard = card = null;
 // let cards= "";
 // const cards = ["ciseaux", "feuille", "pierre"];
 // const cards = ["ciseaux", "feuille", "pierre", "lezard", "spock"]
+const robotImg = '<img src="./assets/robot.jpg" value="robot" />'
 
 const scoreTitle = document.querySelector('#score');
 let score = 0;
@@ -16,6 +17,8 @@ const app = {
     // const rulesButton = "coucou";
     // console.log(rulesButton);
     const showButton = rulesButton.addEventListener("click", app.showRules);
+    const partBot = document.querySelector('.part-bot');
+    partBot.innerHTML = robotImg;
     
     difficulties.homeSelection();
 
@@ -60,7 +63,7 @@ const app = {
     // ----------------------
     const partPlayer = document.querySelector('.part-player');
     const ulElement = document.createElement('ul');
-    console.log(app.cards);
+    // console.log(app.cards);
     app.cards.forEach((card, index) => {
       let liElement = document.createElement('li');
       partPlayer.appendChild(ulElement);
